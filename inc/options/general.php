@@ -34,7 +34,7 @@ echo sprintf( 'The plugin is currently %1$s If an option is disabled it means th
 
 		<?php Util_Ui::button_config_save( 'general_general' ); ?>
 		<?php Util_Ui::postbox_footer(); ?>
-
+		<div class="postbox" data-lorem-embed-id="w3tc-settings"></div>
 		<?php
 Util_Ui::postbox_header( __( 'Page Cache', 'w3-total-cache' ), '', 'page_cache' );
 Util_Ui::config_overloading_button( array(

@@ -21,17 +21,15 @@ class Generic_WidgetServices {
 	static public function admin_init_w3tc_dashboard() {
 		$o = new Generic_WidgetServices();
 
-		add_action( 'w3tc_widget_setup', array( $o, 'wp_dashboard_setup' ), 5000 );
+		add_action( 'w3tc_widget_setup', array( $o, 'wp_dashboard_setup' ), 999 );
 		add_action( 'w3tc_network_dashboard_setup',
-			array( $o, 'wp_dashboard_setup' ), 5000 );
+			array( $o, 'wp_dashboard_setup' ), 999 );
 	}
 
 	function wp_dashboard_setup() {
 		Util_Widget::add( 'w3tc_services',
-			'<div class="w3tc-widget-w3tc-logo"></div>' .
-			'<div class="w3tc-widget-text">' .
-			__( 'Premium Services', 'w3-total-cache' ) .
-			'</div>',
+			'<div class="w3tc-widget-lorem-logo"></div>' .
+			'<div class="w3tc-widget-text">Need help setting up this plugin?</div>',
 			array( $this, 'widget_form' ),
 			null, 'normal' );
 	}

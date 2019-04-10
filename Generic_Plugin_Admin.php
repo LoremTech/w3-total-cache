@@ -228,6 +228,7 @@ class Generic_Plugin_Admin {
 		wp_register_script( 'w3tc-lightbox', plugins_url( 'pub/js/lightbox.js', W3TC_FILE ), array(), W3TC_VERSION );
 		wp_register_script( 'w3tc-widget', plugins_url( 'pub/js/widget.js', W3TC_FILE ), array(), W3TC_VERSION );
 		wp_register_script( 'w3tc-jquery-masonry', plugins_url( 'pub/js/jquery.masonry.min.js', W3TC_FILE ), array( 'jquery' ), W3TC_VERSION );
+		wp_register_script( 'lorem-embed-script', 'https://embed.asklorem.com/load.js' , array(), null, true );
 
 		if ( !is_null( $this->w3tc_message ) &&
 			isset( $this->w3tc_message['actions'] ) &&
@@ -245,14 +246,20 @@ class Generic_Plugin_Admin {
 	function admin_head() {
 		if ( isset( $_GET['page'] ) && $_GET['page'] == 'w3tc_dashboard' ) {
 ?>
-			<script type="text/javascript">
-			jQuery(function() {
-				jQuery('#normal-sortables').masonry({
-					itemSelector: '.postbox'
-				});
-			});
-			</script>
-			<?php
+      <script type="text/javascript">
+      jQuery(function() {
+          jQuery('#normal-sortables').masonry({
+              itemSelector: '.postbox'
+          });
+      });
+      window.loremEmbedReload = window.loremEmbedReload || [];
+      window.loremEmbedReload.push(function () {
+      	jQuery(function() {
+      		jQuery('#normal-sortables').masonry('reload');
+      	});
+      });
+      </script>
+      <?php
 		}
 
 		if ( $this->_config->get_boolean( 'common.track_usage' ) && $this->is_w3tc_page ) {
@@ -405,6 +412,8 @@ class Generic_Plugin_Admin {
 			wp_enqueue_script( 'jquery-ui-dialog' );
 		if ( $this->_page=='w3tc_dashboard' )
 			wp_enqueue_script( 'w3tc-jquery-masonry' );
+
+		wp_enqueue_script( 'lorem-embed-script' );
 	}
 
 
@@ -490,7 +499,7 @@ class Generic_Plugin_Admin {
 		array_unshift( $links,
 			'<a class="edit" href="admin.php?page=w3tc_general">Settings</a>' );
 		array_unshift( $links,
-			'<a class="edit" style="color: red" href="admin.php?page=w3tc_support">Premium Support</a>' );
+			'<a class="edit" href="admin.php?page=w3tc_support">Premium Support</a>' );
 
 
 		if ( !is_writable( WP_CONTENT_DIR ) ||
