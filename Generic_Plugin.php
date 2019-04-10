@@ -317,7 +317,7 @@ class Generic_Plugin {
 			$menu_items['60010.generic'] = array(
 				'id' => 'w3tc_support',
 				'parent' => 'w3tc',
-				'title' => __( 'Support', 'w3-total-cache' ),
+				'title' => __( 'Premium Support', 'w3-total-cache' ),
 				'href' => network_admin_url( 'admin.php?page=w3tc_support' )
 			);
 

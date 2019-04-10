@@ -6,7 +6,7 @@ if ( !defined( 'W3TC' ) )
 
 ?>
 <div id="w3tc-help">
-	<p><?php _e( 'Request professional <a href="admin.php?page=w3tc_support" style="color: red;"><strong>support</strong></a> or troubleshoot issues using the common questions below:', 'w3-total-cache' ); ?></p>
+	<p><?php _e( 'Request <a href="admin.php?page=w3tc_support"><strong>premium support</strong></a> or troubleshoot issues using the common questions below:', 'w3-total-cache' ); ?></p>
 
         <ul>
             <?php foreach ( $entries as $entry ): ?>
